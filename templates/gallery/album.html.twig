@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gallerien{% endblock %}
+
+{# Wird von Base üernommen #}
+
+{% block album %}
+    <div class="row">
+        {% for type, items in items %}
+            <div class="col s3">
+                <div class="card hoverable">
+                    {% for key, value in items %}
+                        {% if loop.index == 1 %}
+                            <div class="card-image">
+                                <img class="IMG-FIT_Album" src="{{ asset('images/gallery') }}/{{ type }}/{{ value }}">
+                            </div>
+                            <div class="card-content">
+                                <span class="card-title activator grey-text text-darken-4"><a href="{{ path ('gallery.view',{id: type}) }}">{{ type }}</a></span>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

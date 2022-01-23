@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gallerien - {{ child }}{% endblock %}
+
+{% block capture %}<a href="{{ path ('gallery.base') }}">Gallerien</a> - ({{ child }}){% endblock %}
+
+{% block images %}
+    <div class="row">
+        {% for i in items %}
+            <div class="col s2" data-aos="fade-up" data-aos-anchor-placement="bottom-bottom">
+                <div class="card hoverable">
+                    <div class="card-image">
+                        <a href="{{ asset('images/gallery') }}/{{ child }}/{{ i }}" data-lightbox="example-set" data-title="{{ i }}"><img class="IMG-FIT_Image" src="{{ asset('images/gallery') }}/{{ child }}/{{ i }}"></a>
+                    </div>
+                    <div class="card-content">
+                        <p>{{ i }}</p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+      <ul class="pagination">
+    <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
+    <li class="active"><a href="#!">1</a></li>
+    <li class="waves-effect"><a href="#!">2</a></li>
+    <li class="waves-effect"><a href="#!">3</a></li>
+    <li class="waves-effect"><a href="#!">4</a></li>
+    <li class="waves-effect"><a href="#!">5</a></li>
+    <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
+  </ul>
+{% endblock %}

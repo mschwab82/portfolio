@@ -1,0 +1,14 @@
+.IMG-FIT_Album {
+  width: 75%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  height: 200px;
+}
+
+.IMG-FIT_Image {
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  height: 150px;
+}
+/*# sourceMappingURL=style.css.map */
