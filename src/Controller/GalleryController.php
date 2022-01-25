@@ -53,7 +53,7 @@ class GalleryController extends AbstractController
     }
 
     /**
-     * @Route("/view/{id}", name="view")
+     * @Route("gallery/view/{id}", name="view")
      */
     public function view(Request $child) {
 
@@ -64,7 +64,7 @@ class GalleryController extends AbstractController
     
             foreach ($cdir as $key => $value) {
     
-                if (!in_array($value,array(".","..","01_Description.txt"))) {
+                if (!in_array($value,array(".","..","01_JSON"))) {
                     if (is_dir($dir . DIRECTORY_SEPARATOR . $value)) {
                         $result[$value] = dirToArray1($dir . DIRECTORY_SEPARATOR . $value);
                     }
