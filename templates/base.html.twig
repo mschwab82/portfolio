@@ -6,8 +6,8 @@
 
     <title>{% block title %}{% endblock %}</title>
 
+    <!-- ANCHOR CSS  -->
     {% block stylesheets %}
-      <!-- CSS  -->
       {# <link href="{{ asset('app/css/bootstrap.css') }}" rel="stylesheet" type="text/css"> #}
       <link href="{{ asset('app/css/aos.css') }}" rel="stylesheet" type="text/css">
       <link href="{{ asset('app/css/lightbox.css') }}" rel="stylesheet" type="text/css">
@@ -17,6 +17,7 @@
 
   </head>
 
+  <!-- ANCHOR Body  -->
   <body>
     <section class="section-lg">
         <div class="container">
@@ -41,7 +42,8 @@
           </div>
         </div>
     </section>
-    
+  
+  <!-- ANCHOR Slider  -->    
   <div class="slider">
     <ul class="slides">
       <li>
@@ -76,7 +78,7 @@
   </div>
 
   {% block javascripts %}
-    <!-- Script  -->
+    <!-- ANCHOR Script  -->
     <script src="{{ asset('app/js/aos/aos.js') }}"></script>
     <script src="{{ asset('app/js/lightbox/lightbox-plus-jquery.js') }}"></script>
     <script src="{{ asset('app/js/materialize/materialize.js') }}"></script>
