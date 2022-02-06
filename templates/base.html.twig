@@ -6,27 +6,28 @@
 
     <title>{% block title %}{% endblock %}</title>
 
+
+
     <!-- ANCHOR CSS  -->
     {% block stylesheets %}
-      <link href="{{ asset('app/css/output/style.css') }}" rel="stylesheet" type="text/css">
+      <link href="{{ asset('app/css/style.css') }}" type="text/css" rel="stylesheet" />
     {% endblock %}
 
   </head>
 
   <!-- ANCHOR Body  -->
   <body>
-    <section class="section-lg">
-      <div class="container">
-        <div class="row text-center text-lg-left">
-          <div class="row">
-            <div class="col-lg-12">
-              <h2>{% block capture %}Gallerie{% endblock %}</h2>
-            </div>
-          </div>
+
+    <section>
+      <div>
+        <div>
+          <h2>{% block capture %}Gallerie{% endblock %}</h2>
+        </div>
+        <div>
 
           {% block body %}
 
-          <div class="col-12 col-lg-12">
+          <div>
 
             {% block album %}{% endblock %}
             {% block images %}{% endblock %}
