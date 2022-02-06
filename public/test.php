@@ -2,7 +2,6 @@
 
 $bild = 'images/gallery/20220115-145-00029.jpg';
 
-
 if (exif_read_data($bild, 'IFD0')) {
     $exif = exif_read_data($bild, 0, true);
     foreach ($exif as $key => $section) {
