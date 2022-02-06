@@ -78,7 +78,6 @@
         }
     },
     "require-dev": {
-        "symfony/stopwatch": "6.0.*",
-        "symfony/web-profiler-bundle": "6.0.*"
+        "symfony/stopwatch": "6.0.*"
     }
 }
