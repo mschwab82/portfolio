@@ -1,10 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Gallerien{% endblock %}
+{% block title %}<h1 class="text-3xl">Gallerien</h1>{% endblock %}
 
 {# Wird von Base üernommen #}
 
 {% block album %}
+
+
     <section class="overflow-hidden text-gray-700">
         <div class="container px-5 py-2 mx-auto lg:pt-12 lg:px-32">
             <div class="flex flex-wrap -m-1 md:-m-2">
@@ -13,13 +15,8 @@
                         {% for key, value in items %}
                             {% if loop.index == 1 %}
                                 <div class="w-full p-1 md:p-2">
-                                    <img alt="gallery" class="block object-cover object-center w-full h-64 rounded-xl" src="{{ asset('images/gallery') }}/{{ type }}/{{ value }}">
+                                    <a href="{{ path ('gallery.view',{id: type}) }}"><img alt="gallery" class="block object-cover object-center w-full h-64 rounded-xl" src="{{ asset('images/gallery') }}/{{ type }}/{{ value }}"></a>
                                 </div>
-                                {# <div class="p-8">
-                                    <div class="uppercase tracking-wide text-sm text-indigo-500 font-semibold">
-                                        <a href="{{ path ('gallery.view',{id: type}) }}">{{ type }}</a>
-                                    </div>
-                                </div> #}
                             {% endif %}
                         {% endfor %}
                     </div>

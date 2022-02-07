@@ -1,32 +1,21 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Gallerien - {{ child }}{% endblock %}
+{% block title %}Home - {{ child }}{% endblock %}
 
-{% block capture %}<a href="{{ path ('gallery.base') }}">Gallerien</a> - ({{ child }}){% endblock %}
+{% block capture %}<a href="{{ path ('gallery.base') }}"><u>Home</u></a> - {{ child }}{% endblock %}
 
-{% block images %}
-    <div class="row">
-        {% for i in items %}
-            <div class="col s2" data-aos="fade-up" data-aos-anchor-placement="bottom-bottom">
-                <div class="card hoverable">
-                    <div class="card-image">
-                        <a href="{{ asset('images/gallery') }}/{{ child }}/{{ i }}" data-lightbox="example-set" data-title="{{ i }}"><img class="IMG-FIT_Image" src="{{ asset('images/gallery') }}/{{ child }}/{{ i }}"></a>
+{% block album %}
+    <section class="overflow-hidden text-gray-700">
+        <div class="container px-5 py-2 mx-auto lg:pt-12 lg:px-32">
+            <div class="flex flex-wrap -m-1 md:-m-2">
+                {% for i in items %}
+                    <div class="flex flex-wrap w-1/3">
+                        <div class="w-full p-1 md:p-2">
+                            <img alt="gallery" class="block object-cover object-center w-full h-64 rounded-xl" src="{{ asset('images/gallery') }}/{{ child }}/{{ i }}">
+                        </div>
                     </div>
-                    <div class="card-content">
-                        <p>{{ i }}</p>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
-        {% endfor %}
-    </div>
-
-      <ul class="pagination">
-    <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
-    <li class="active"><a href="#!">1</a></li>
-    <li class="waves-effect"><a href="#!">2</a></li>
-    <li class="waves-effect"><a href="#!">3</a></li>
-    <li class="waves-effect"><a href="#!">4</a></li>
-    <li class="waves-effect"><a href="#!">5</a></li>
-    <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
-  </ul>
+        </div>
+    </selection>
 {% endblock %}
