@@ -8,3 +8,4 @@
 /vendor/
 /node_modules/
 ###< symfony/framework-bundle ###
+public/images/gallery/01_JSON/
