@@ -47,6 +47,15 @@ class GalleryController extends AbstractController
 
         $items = dirToArray($imagepath);
 
+/*         $JSON = file_get_contents($imagepath.'/'.'01_JSON'.'/'.'Axalp.json');
+
+$data = json_decode($JSON);
+
+print ('<pre>');
+print_r($data);
+print ('</pre>');
+ */
+
         return $this->render('gallery/album.html.twig', [
             'items' => $items,
         ]);
