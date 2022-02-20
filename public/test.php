@@ -9,11 +9,11 @@ function dirToArray($dir) {
     foreach ($cdir as $key => $value) {
         if (!in_array($value,array(".","..","01_JSON"))) {
 
-            if (is_dir($dir . DIRECTORY_SEPARATOR . $value)) {
+            if (is_dir($dir . $value)) {
                 $filename = $imagepath.'01_JSON'.'/'.$value.'.json';
-
-                $result[$value] = dirToArray($dir . DIRECTORY_SEPARATOR . $value);
                 
+                $result[$value][$value] = dirToArray($dir . $value);
+
                 $json_encoded = json_encode($result[$value]);
                 file_put_contents($filename, $json_encoded);
             }
@@ -22,9 +22,9 @@ function dirToArray($dir) {
                 getimagesize($value_image, $infos);
                 $exif = exif_read_data($value_image, 0, true);
                 $tags = iptcparse($infos['APP13']);
+
             
                 $metadata = array(
-                    $exif['FILE']['FileName'],
                     $exif['COMPUTED']['Height'], 
                     $exif['COMPUTED']['Width'], 
                     $exif['COMPUTED']['ApertureFNumber'],
@@ -41,7 +41,7 @@ function dirToArray($dir) {
                     $tags['2#025']
                 );
             
-                $result[] = $metadata;
+                $result[$value][] = $metadata;
             }
         }
     }
@@ -52,5 +52,9 @@ function dirToArray($dir) {
 $imagepath = 'images/gallery/';
 
 $items = dirToArray($imagepath);
+
+print ('<pre>');
+print_r($items);
+print ('</pre>');
 
 ?>
