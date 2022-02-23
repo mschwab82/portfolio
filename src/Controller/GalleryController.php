@@ -26,10 +26,10 @@ class GalleryController extends AbstractController
     
             foreach ($cdir as $key => $value) {
                 if (!in_array($value,array(".","..","01_JSON"))) {
-                    if (is_dir($dir . DIRECTORY_SEPARATOR . $value)) {
+                    if (is_dir($dir . '/' . $value)) {
                         $filename = $imagepath.'01_JSON'.'/'.$value.'.json';
 
-                        $result[$value] = dirToArray($dir . DIRECTORY_SEPARATOR . $value);
+                        $result[$value] = dirToArray($dir . '/' . $value);
                         
                         $json_encoded = json_encode($result[$value]);
                         file_put_contents($filename, $json_encoded);
@@ -45,16 +45,15 @@ class GalleryController extends AbstractController
 
         $imagepath = 'images/gallery/';
 
-        $items = dirToArray($imagepath);
+        /* $items = dirToArray($imagepath); */
 
-/*         $JSON = file_get_contents($imagepath.'/'.'01_JSON'.'/'.'Axalp.json');
+ 		$JSON = file_get_contents($imagepath.'/'.'01_JSON'.'/'.'02_test'.'.json');
 
-$data = json_decode($JSON);
+		$items = json_decode($JSON, true);
 
-print ('<pre>');
-print_r($data);
-print ('</pre>');
- */
+/* print ('<pre>');
+print_r($items);
+print ('</pre>'); */
 
         return $this->render('gallery/album.html.twig', [
             'items' => $items,
