@@ -21,7 +21,7 @@ function dirToArray($dir) {
                 $value_image = $imagepath.'/'.$value;
                 getimagesize($value_image, $infos);
                 $exif = exif_read_data($value_image, 0, true);
-                $tags = iptcparse($infos['APP13']);
+                // $tags = iptcparse($infos['APP13']);
 
             
                 $metadata = array(
@@ -38,10 +38,10 @@ function dirToArray($dir) {
                     $exif['EXIF']['ShutterSpeedValue'],
                     $exif['EXIF']['ApertureValue'],
                     $exif['EXIF']['UndefinedTag:0xA434'],
-                    $tags['2#025']
+                    // $tags['2#025']
                 );
             
-                $result[$value][] = $metadata;
+                $result[$value] = $metadata;
             }
         }
     }
