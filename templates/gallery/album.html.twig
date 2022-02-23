@@ -6,7 +6,27 @@
 
 {% block album %}
 
-    <section class="overflow-hidden text-gray-700">
+    {% for album_1, albums_1 in items %}
+        <h2>{{ album_1 }}</h2>
+
+         {% for album_2, albums_2 in albums_1 %}
+            <ul>{{ album_2 }}</ul>
+
+            {% for key, value in albums_2 %}
+                <ul>{{ value }}</ul>
+                
+                {# {% for key, value in value %}
+                    <li>{{ value }}</li>
+                {% endfor %} #}
+        
+            {% endfor %} 
+        {% endfor %} 
+    {% endfor %}
+
+
+
+{#     <section class="overflow-hidden text-gray-700">
+
         <div class="container px-5 py-2 mx-auto lg:pt-12 lg:px-32">
             <div class="flex flex-wrap -m-1 md:-m-2">
                 {% for type, items in items %}
@@ -22,5 +42,5 @@
                 {% endfor %}
             </div>
         </div>
-    </selection>
+    </selection> #}
 {% endblock %}
