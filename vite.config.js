@@ -1,30 +1,10 @@
 // vite.config.js
 import { resolve } from "path";
 import { unlinkSync, existsSync } from "fs";
-
-const symfonyPlugin = {
-  name: "symfony",
-  configResolved(config) {
-    if (config.env.DEV && config.build.manifest) {
-      let buildDir = resolve(config.root, config.build.outDir, "manifest.json");
-      existsSync(buildDir) && unlinkSync(buildDir);
-    }
-  },
-  configureServer(devServer) {
-    let { watcher, ws } = devServer;
-    watcher.add(resolve("templates/**/*.twig"));
-    watcher.on("change", function (path) {
-      if (path.endsWith(".twig")) {
-        ws.send({
-          type: "full-reload",
-        });
-      }
-    });
-  },
-};
+import symfonyPlugin from 'vite-plugin-symfony';
 
 export default {
-  plugins: [symfonyPlugin],
+  plugins: [symfonyPlugin()],
   server: {
     watch: {
       disableGlobbing: false,
@@ -36,12 +16,13 @@ export default {
     manifest: true,
     emptyOutDir: true,
     assetsDir: "",
+    cssCodeSplit: true,
+    format: 'cjs',
     outDir: "../public/build/",
     rollupOptions: {
-      input: [
-        "./assets/js/main.js", 
-        "./assets/scss/style.scss"
-      ],
+      input: {
+        app: "./assets/js/main.js", 
+      },
     },
   },
 };
