@@ -8,4 +8,20 @@
 /vendor/
 /node_modules/
 ###< symfony/framework-bundle ###
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
 public/images/gallery/01_JSON/
+###> pentatrion/vite-bundle ###
+/node_modules/
+/public/build/
+###< pentatrion/vite-bundle ###

@@ -6,26 +6,26 @@
 
 {% block album %}
 
-    {% for album_1, albums_1 in items %}
+{#  {% for album_1, albums_1 in items %}
         <h2>{{ album_1 }}</h2>
 
-         {% for album_2, albums_2 in albums_1 %}
+        {% for album_2, albums_2 in albums_1 %}
             <ul>{{ album_2 }}</ul>
 
-            {% for key, value in albums_2 %}
-                <ul>{{ value }}</ul>
+            {% for album_3, albums_3 in albums_2 %}
+                <ul>{{ albums_3 }}</ul>
                 
-                {# {% for key, value in value %}
+                {# {% for key, value in albums_3.tags %}
                     <li>{{ value }}</li>
                 {% endfor %} #}
         
-            {% endfor %} 
+{#             {% endfor %} 
         {% endfor %} 
-    {% endfor %}
+    {% endfor %} #}
 
 
 
-{#     <section class="overflow-hidden text-gray-700">
+     <section class="overflow-hidden text-gray-700">
 
         <div class="container px-5 py-2 mx-auto lg:pt-12 lg:px-32">
             <div class="flex flex-wrap -m-1 md:-m-2">
@@ -42,5 +42,5 @@
                 {% endfor %}
             </div>
         </div>
-    </selection> #}
+    </selection>
 {% endblock %}

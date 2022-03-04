@@ -9,7 +9,7 @@
 
     <!-- ANCHOR CSS  -->
     {% block stylesheets %}
-      <link href="{{ asset('app/css/style.css') }}" type="text/css" rel="stylesheet" />
+      <link href="{{ vite_entry_link_tags('app') }}" type="text/css" rel="stylesheet" />
     {% endblock %}
 
   </head>
@@ -43,6 +43,10 @@
 
       {% endblock %}
 
+      {% block script %}
+        <script type="module" src="{{ vite_entry_script_tags('app') }}"></script>
+      {% endblock %}
+      
     </div>
   </body>
 </html>

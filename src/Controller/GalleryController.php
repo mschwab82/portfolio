@@ -45,15 +45,15 @@ class GalleryController extends AbstractController
 
         $imagepath = 'images/gallery/';
 
-        /* $items = dirToArray($imagepath); */
+        $items = dirToArray($imagepath);
 
- 		$JSON = file_get_contents($imagepath.'/'.'01_JSON'.'/'.'02_test'.'.json');
+ /*        $JSON = file_get_contents($imagepath.'01_JSON'.'/'.'all'.'.json');
 
-		$items = json_decode($JSON, true);
+		$items = json_decode($JSON, true); */
 
-/* print ('<pre>');
-print_r($items);
-print ('</pre>'); */
+/*         print ('<pre>');
+        print_r($items);
+        print ('</pre>'); */
 
         return $this->render('gallery/album.html.twig', [
             'items' => $items,
