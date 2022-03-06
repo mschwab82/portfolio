@@ -18,42 +18,11 @@ class GalleryController extends AbstractController
 
     public function index(): Response
     {
-        function dirToArray($dir) {
-
-            $result = array();
-            $cdir = scandir($dir);
-            $imagepath = $dir;
-    
-            foreach ($cdir as $key => $value) {
-                if (!in_array($value,array(".","..","01_JSON"))) {
-                    if (is_dir($dir . '/' . $value)) {
-                        $filename = $imagepath.'01_JSON'.'/'.$value.'.json';
-
-                        $result[$value] = dirToArray($dir . '/' . $value);
-                        
-                        $json_encoded = json_encode($result[$value]);
-                        file_put_contents($filename, $json_encoded);
-                    }
-                    else {
-                        $result[] = $value;
-                    }
-                }
-            }
-    
-            return $result;
-        }
-
         $imagepath = 'images/gallery/';
 
-        $items = dirToArray($imagepath);
+        $JSON = file_get_contents($imagepath.'01_JSON'.'/'.'All'.'.json');
 
- /*        $JSON = file_get_contents($imagepath.'01_JSON'.'/'.'all'.'.json');
-
-		$items = json_decode($JSON, true); */
-
-/*         print ('<pre>');
-        print_r($items);
-        print ('</pre>'); */
+		$items = json_decode($JSON, true);
 
         return $this->render('gallery/album.html.twig', [
             'items' => $items,

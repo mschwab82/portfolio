@@ -6,38 +6,33 @@
 
 {% block album %}
 
-{#  {% for album_1, albums_1 in items %}
+    {% for album_1, albums_1 in items %}
         <h2>{{ album_1 }}</h2>
 
         {% for album_2, albums_2 in albums_1 %}
             <ul>{{ album_2 }}</ul>
-
-            {% for album_3, albums_3 in albums_2 %}
-                <ul>{{ albums_3 }}</ul>
-                
-                {# {% for key, value in albums_3.tags %}
-                    <li>{{ value }}</li>
-                {% endfor %} #}
-        
-{#             {% endfor %} 
+                <li>{{ albums_2.ApertureFNumber }}</li>
+                <li>{{ albums_2.FocalLength }}</li>
+                <li>{{ albums_2.ExposureTime }}</li>
+                <li>{{ albums_2.ISOSpeedRatings }}</li>
+                <li>{{ albums_2.DateTimeOriginal }}</li>
+                <li>{{ albums_2.Lens }}</li>       
+            {% endfor %}  
         {% endfor %} 
-    {% endfor %} #}
 
 
-
-     <section class="overflow-hidden text-gray-700">
-
+    <section class="overflow-hidden text-gray-700">
         <div class="container px-5 py-2 mx-auto lg:pt-12 lg:px-32">
             <div class="flex flex-wrap -m-1 md:-m-2">
-                {% for type, items in items %}
+                {% for album, albums in items %}
                     <div class="flex flex-wrap w-1/3">
-                        {% for key, value in items %}
+                        {% for file, files in albums %}
                             {% if loop.index == 1 %}
                                 <div class="w-full p-1 md:p-2">
-                                    <a href="{{ path ('gallery.view',{id: type}) }}"><img alt="gallery" class="block object-cover object-center w-full h-64 rounded-xl" src="{{ asset('images/gallery') }}/{{ type }}/{{ value }}"></a>
+                                    <a href=""><img alt="gallery" class="block object-cover object-center w-full h-64 rounded-xl" src="{{ asset('images/gallery') }}/{{ album }}/{{ file }}"></a>
                                 </div>
                             {% endif %}
-                        {% endfor %}
+                        {% endfor %} 
                     </div>
                 {% endfor %}
             </div>

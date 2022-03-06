@@ -16,7 +16,6 @@ function dirToArray($dir) {
 
                 $json_encoded = json_encode($result[$value]);
                 file_put_contents($filename, $json_encoded);
-            
             }
             else {
                 $value_image = $imagepath.'/'.$value;
@@ -24,19 +23,20 @@ function dirToArray($dir) {
                 $exif = exif_read_data($value_image, 0, true);
                 $tags = iptcparse($infos['APP13']);
 
-            
                 $metadata = array(
-                    'Height' => $exif['COMPUTED']['Height'], 
-                    'Width' => $exif['COMPUTED']['Width'], 
+
                     'ApertureFNumber' => $exif['COMPUTED']['ApertureFNumber'],
-                    'Model' => $exif['IFD0']['Model'],
-                    'Artist' => $exif['IFD0']['Artist'],
                     'FocalLength' => substr($exif['EXIF']['FocalLength'], 0, -2),
                     'ExposureTime' => $exif['EXIF']['ExposureTime'],
                     'ISOSpeedRatings' => $exif['EXIF']['ISOSpeedRatings'],
                     'DateTimeOriginal' => $exif['EXIF']['DateTimeOriginal'],
                     'Lens' => $exif['EXIF']['UndefinedTag:0xA434'],
                     'Tags' => $tags['2#025']
+                    
+                    /* 'Height' => $exif['COMPUTED']['Height'],
+                    'Width' => $exif['COMPUTED']['Width'],
+                    'Model' => $exif['IFD0']['Model'], 
+                    'Artist' => $exif['IFD0']['Artist'], */
                 );
             
                 $result[$value] = $metadata;
