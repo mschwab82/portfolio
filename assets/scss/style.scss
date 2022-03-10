@@ -2,6 +2,12 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
+/* @import "lightbox"; */
+
 // @import 'preset';
 
 // Tutorial Start
+
+.group:focus .group-focus\:flex {
+    display: flex;
+}

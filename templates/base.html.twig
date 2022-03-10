@@ -3,9 +3,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
-
     <title>{% block title %}{% endblock %}</title>
-
 
     <!-- ANCHOR CSS  -->
     {% block stylesheets %}
@@ -16,38 +14,41 @@
 
   <!-- ANCHOR Body  -->
   <body>
-
-    <div class="container px-5 py-2 mx-auto lg:pt-12 lg:px-32">
-      <nav class="flex" aria-label="Breadcrumb">
-        <ol class="inline-flex items-center space-x-1 md:space-x-3 text-4xl">
-          {% block capture %}
-            <li class="inline-flex items-center">
-              <svg class="mr-2 w-8 h-8" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"></path></svg>
-                Home
-            </li>
-          {% endblock %}
-        </ol>
-      </nav>
-    </div>
-
     <div>
+ {#      <div>
+        <nav class="flex" aria-label="Breadcrumb">
+          <ol class="inline-flex items-center space-x-1 md:space-x-3 text-4xl">
+            {% block capture %}
+              <li class="inline-flex items-center">
+                <svg class="mr-2 w-8 h-8" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"></path></svg>
+                  <h1 class="text-3xl">Product Category Page Title</h1>
+              </li>
+            {% endblock %}
+          </ol>
+        </nav>
+      </div> #}
 
-      {% block body %}
+      <div>
 
-        <div>
+        {% block body %}
 
-          {% block album %}{% endblock %}
-          {% block images %}{% endblock %}
+          <div>
 
-        </div>
+            {% block album %}{% endblock %}
+            {% block images %}{% endblock %}
+            {% block lightbox %}{% endblock %}
 
-      {% endblock %}
+          </div>
 
-    <!-- ANCHOR JS  -->
-    {% block javascripts %}
-      {{ vite_entry_script_tags('app') }}
-    {% endblock %}
+        {% endblock %}
 
+      </div>
     </div>
   </body>
+
+  <!-- ANCHOR JS  -->
+  {% block javascripts %}
+    {{ vite_entry_script_tags('app') }}
+  {% endblock %}
+
 </html>
