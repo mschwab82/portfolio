@@ -7,14 +7,11 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-/**
- * @Route("/", name="gallery.")
- */
+#[Route('/', name: 'gallery.')]
+
 class GalleryController extends AbstractController
 {
-    /**
-     * @Route("/", name="base")
-     */
+    #[Route('/', name: 'base')]
 
     public function index(): Response
     {
@@ -29,10 +26,9 @@ class GalleryController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("gallery/view/{id}", name="view")
-     */
-    public function view(Request $child) {
+    #[Route('/album/{id}', name: 'album')]
+
+    public function album(Request $child) {
 
         $gallery_id = $child->attributes->get('id');
 
