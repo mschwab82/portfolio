@@ -3,13 +3,18 @@
 /.env.local.php
 /.env.*.local
 /config/secrets/prod/prod.decrypt.private.php
-/public/bundles/
+/bin/
 /var/
 /vendor/
-/node_modules/
-###< symfony/framework-bundle ###
+/symfony.lock
 
-# Editor directories and files
+###> JS  ###
+/node_modules/*
+/package-lock.json
+
+###> JS  ###
+/composer.lock
+
 .vscode/*
 !.vscode/extensions.json
 .idea
@@ -17,6 +22,5 @@
 public/images/gallery/01_JSON/
 
 ###> pentatrion/vite-bundle ###
-/node_modules/
 /public/build/
 ###< pentatrion/vite-bundle ###
