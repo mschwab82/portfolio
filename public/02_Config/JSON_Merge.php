@@ -1,6 +1,6 @@
 <?php
 
-  $imagepath = 'images/gallery/01_JSON/';
+  $imagepath = '../images/gallery/01_JSON/';
 
   $files = array_diff(scandir($imagepath), ['.','..']);
 

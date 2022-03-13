@@ -9,13 +9,13 @@
 /symfony.lock
 
 ###> JS  ###
-/node_modules/*
+/node_modules/
 /package-lock.json
 
 ###> JS  ###
 /composer.lock
 
-.vscode/*
+.vscode/
 !.vscode/extensions.json
 .idea
 .DS_Store

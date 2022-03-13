@@ -1,6 +1,7 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
+@import "lightgallery/css/lightgallery-bundle.css";
 
 /* @import "lightbox"; */
 
@@ -8,6 +9,6 @@
 
 // Tutorial Start
 
-.group:focus .group-focus\:flex {
+/* .group:focus .group-focus\:flex {
     display: flex;
-}
+} */

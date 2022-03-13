@@ -1,4 +1,3 @@
-import "../scss/style.scss"
+import "../scss/style.scss";
 
-import "fontawesome"
-import "alpine"
+import "./lightgallery.js";

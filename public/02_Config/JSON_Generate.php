@@ -47,7 +47,7 @@ function dirToArray($dir) {
     return $result;
 }
 
-$imagepath = 'images/gallery/';
+$imagepath = '../images/gallery/';
 
 $items = dirToArray($imagepath);
 
