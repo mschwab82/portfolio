@@ -1,5 +1,5 @@
 module.exports = {
-  purge: [
+  content: [
     './templates/**/*.{twig,html,js}',
     './public/01_Tests/*.html'
   ],
