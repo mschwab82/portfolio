@@ -1,7 +1,7 @@
 module.exports = {
   purge: [
     './templates/**/*.{twig,html,js}',
-    './public/*.html'
+    './public/01_Tests/*.html'
   ],
     future: {
       // removeDeprecatedGapUtilities: true,
