@@ -51,8 +51,4 @@ $imagepath = '../images/gallery/';
 
 $items = dirToArray($imagepath);
 
-print ('<pre>');
-print_r($items);
-print ('</pre>');
-
 ?>
