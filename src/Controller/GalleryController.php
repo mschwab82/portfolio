@@ -21,6 +21,8 @@ class GalleryController extends AbstractController
 
 		$items = json_decode($JSON, true);
 
+        logData('1','JSON wurde eingelesen');
+
         return $this->render('gallery/album.html.twig', [
             'items' => $items,
         ]);
@@ -37,6 +39,8 @@ class GalleryController extends AbstractController
         $JSON = file_get_contents($imagepath.'01_JSON'.'/'.$gallery_id.'.json');
 
 		$items = json_decode($JSON, true);
+
+        logData('INFO','Album ' . $gallery_id . ' wird aufgerufen');
 
         return $this->render('gallery/images.html.twig', [
 
