@@ -1,7 +1,7 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
-@import "lightgallery/css/lightgallery-bundle.css";
+/* @import "lightgallery/css/lightgallery-bundle.css"; */
 
 /* @import "lightbox"; */
 
@@ -12,3 +12,8 @@
 /* .group:focus .group-focus\:flex {
     display: flex;
 } */
+
+img {
+	height:200px; 
+	object-fit: cover;
+}

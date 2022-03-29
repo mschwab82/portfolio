@@ -1,3 +1,3 @@
 import "../scss/style.scss";
 
-import "./lightgallery.js";
+// import "./lightgallery.js";
