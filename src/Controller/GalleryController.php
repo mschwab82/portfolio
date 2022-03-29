@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Service\Logger;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -15,13 +16,22 @@ class GalleryController extends AbstractController
 
     public function index(): Response
     {
-        $imagepath = 'images/gallery/';
 
-        $JSON = file_get_contents($imagepath.'01_JSON'.'/'.'All'.'.json');
+        // logData('Galleriepart wurde aufgerufen');
 
-		$items = json_decode($JSON, true);
+        $imagepath = './images/gallery/';
 
-        logData('1','JSON wurde eingelesen');
+        $JSON_File = $imagepath.'01_JSON'.'/'.'All'.'.json';
+
+/*         if(!is_file($JSON_File)) {
+            $items = dirToArray($imagepath);
+            logData('Datei ist nicht vorhanden und wurde erstellt. Es wurden ' . count($items) . ' Gallerien eingelesen');  
+        } */
+
+        $JSON = file_get_contents($JSON_File);
+        $items = json_decode($JSON, true);
+
+        // logData('Es wurden ' . count($items) . ' Gallerien eingelesen');
 
         return $this->render('gallery/album.html.twig', [
             'items' => $items,
@@ -34,13 +44,13 @@ class GalleryController extends AbstractController
 
         $gallery_id = $child->attributes->get('id');
 
-        $imagepath = 'images/gallery/';
+        $imagepath = $_SERVER['DOCUMENT_ROOT'] . '/images/gallery/';
 
         $JSON = file_get_contents($imagepath.'01_JSON'.'/'.$gallery_id.'.json');
 
 		$items = json_decode($JSON, true);
 
-        logData('INFO','Album ' . $gallery_id . ' wird aufgerufen');
+        // logData('Album ' . $gallery_id . ' wird aufgerufen');
 
         return $this->render('gallery/images.html.twig', [
 
