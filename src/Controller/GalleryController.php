@@ -15,7 +15,7 @@ class GalleryController extends AbstractController
 {
     #[Route('/', name: 'base')]
 
-    public function index(Logger $logger): Response
+    public function index(Logger $logger, JSON $JSON): Response
     {
         $imagepath = './images/gallery/';
 
