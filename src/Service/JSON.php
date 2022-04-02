@@ -6,11 +6,7 @@ class JSON
 { 
     public function dirToArray($dir) {
 
-
-
-
-    
-/*         $result = array();
+        $result = array();
         $cdir = scandir($dir);
         $imagepath = $dir;
 
@@ -45,7 +41,7 @@ class JSON
                         /* 'Height' => $exif['COMPUTED']['Height'],
                         'Width' => $exif['COMPUTED']['Width'],
                         'Model' => $exif['IFD0']['Model'], 
-                        'Artist' => $exif['IFD0']['Artist'], 
+                        'Artist' => $exif['IFD0']['Artist'], */
                     );
                 
                     $result[$value] = $metadata;
@@ -53,6 +49,6 @@ class JSON
             }
         }
     
-        return $result; */
+        return $result;
     }
 }

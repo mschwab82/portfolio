@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Service\Logger;
+use App\Service\JSON;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -14,12 +15,15 @@ class GalleryController extends AbstractController
 {
     #[Route('/', name: 'base')]
 
-    public function index(): Response
+    public function index(Logger $logger): Response
     {
-
-        // logData('Galleriepart wurde aufgerufen');
-
         $imagepath = './images/gallery/';
+
+        $logger->logData($_SERVER["REMOTE_ADDR"].' - '.$_SERVER["HTTP_USER_AGENT"]);
+
+        $logger->logData('Galleriepart wurde aufgerufen');
+
+        // $JSON->dirToArray($imagepath);
 
         $JSON_File = $imagepath.'01_JSON'.'/'.'All'.'.json';
 
@@ -31,7 +35,7 @@ class GalleryController extends AbstractController
         $JSON = file_get_contents($JSON_File);
         $items = json_decode($JSON, true);
 
-        // logData('Es wurden ' . count($items) . ' Gallerien eingelesen');
+        $logger->logData('Es wurden ' . count($items) . ' Gallerien eingelesen');
 
         return $this->render('gallery/album.html.twig', [
             'items' => $items,
