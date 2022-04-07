@@ -2,8 +2,6 @@
 
 namespace App\Controller;
 
-use App\Service\MakeJSON_Service;
-use FilesystemIterator;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpFoundation\Request;
@@ -20,26 +18,27 @@ class GalleryController extends AbstractController
     {
         // $logger->logData($_SERVER["REMOTE_ADDR"].' - '.$_SERVER["HTTP_USER_AGENT"]);
 
-
         $imagepath = './images/gallery/';
 
-        $containerBuilder = new ContainerBuilder();
+        $LoggerBuilder = new ContainerBuilder();
 
-            $containerBuilder->register('logger.service', 'LoggerService');
-            $LoggerService = $containerBuilder->get('logger.service');
+            $LoggerBuilder->register('logger.service', 'LoggerService');
+            $LoggerService = $LoggerBuilder->get('logger.service');
             $LoggerService->logData($_SERVER["REMOTE_ADDR"].' - '.$_SERVER["HTTP_USER_AGENT"]);
 
-        $test_dir = new MakeJSON_Service();
-        $test_dir->dirToArray($imagepath);
+        if (!file_exists($imagepath.'01_JSON/'.'All.json')) {
+        
+            $JSONBuilder = new ContainerBuilder();
+            $JSONBuilder->register('json.service', 'JSONService');
+            $JSONService = $JSONBuilder->get('json.service');
+            $JSONService->dirToArray($imagepath);
+            $JSONService->MergeJSON($imagepath);
+        }
 
         $JSON_File = $imagepath.'01_JSON'.'/'.'All'.'.json';
 
-        $LoggerService->logData($JSON_File);
-
-        $JSON = file_get_contents($JSON_File);
+        $JSON = file_get_contents($JSON_File); 
         $items = json_decode($JSON, true);
-
-        // $logger->logData('Es wurden ' . count($items) . ' Gallerien eingelesen');
 
         return $this->render('gallery/album.html.twig', [
             'items' => $items,
