@@ -26,7 +26,7 @@ class GalleryController extends AbstractController
             $LoggerService = $LoggerBuilder->get('logger.service');
             $LoggerService->logData($_SERVER["REMOTE_ADDR"].' - '.$_SERVER["HTTP_USER_AGENT"]);
 
-        if (!file_exists($imagepath.'01_JSON/'.'All.json')) {
+        if (!file_exists($imagepath.'01_JSON/'.'01_All.json')) {
         
             $JSONBuilder = new ContainerBuilder();
             $JSONBuilder->register('json.service', 'JSONService');
@@ -35,7 +35,7 @@ class GalleryController extends AbstractController
             $JSONService->MergeJSON($imagepath);
         }
 
-        $JSON_File = $imagepath.'01_JSON'.'/'.'All'.'.json';
+        $JSON_File = $imagepath.'01_JSON'.'/'.'01_All'.'.json';
 
         $JSON = file_get_contents($JSON_File); 
         $items = json_decode($JSON, true);
