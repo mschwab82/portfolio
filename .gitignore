@@ -16,12 +16,12 @@
 /composer.lock
 
 .vscode/
-/logs/
 !.vscode/extensions.json
 .idea
 .DS_Store
-/public/images/gallery/01_JSON/
+/public/images/*
 /public/01_Tests/*
+/logs/
 
 ###> pentatrion/vite-bundle ###
 /public/build/
