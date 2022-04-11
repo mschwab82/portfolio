@@ -1,6 +1,8 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
+
+@import "photoswipe/dist/photoswipe.css";
 /* @import "lightgallery/css/lightgallery-bundle.css"; */
 
 /* @import "lightbox"; */
@@ -13,7 +15,10 @@
     display: flex;
 } */
 
-img {
-	height:200px; 
+// @import "gallery_new";
+
+ img {
+	height: 400px;
+	width: 600px; 
 	object-fit: cover;
-}
+ }
