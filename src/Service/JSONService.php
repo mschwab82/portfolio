@@ -7,8 +7,6 @@ class JSONService
 
     function dirToArray($dir_albums) {
 
-
-
         $result = array();
         $cdir = scandir($dir_albums);
         $imagepath = $dir_albums;
@@ -41,7 +39,7 @@ class JSONService
                         'FocalLength' => substr($exif['EXIF']['FocalLength'], 0, -2),
                         'ExposureTime' => $exif['EXIF']['ExposureTime'],
                         'ISOSpeedRatings' => $exif['EXIF']['ISOSpeedRatings'],
-                        'DateTimeOriginal' => $exif['EXIF']['DateTimeOriginal'],
+                        'DateTimeOriginal' => date('d.m.Y H:i:s', strtotime($exif['EXIF']['DateTimeOriginal'])),
                         'Lens' => $exif['EXIF']['UndefinedTag:0xA434'],
                         'Tags' => $tags['2#025']
                         
@@ -68,7 +66,7 @@ class JSONService
             ->files()->in($dir_json);
 
         foreach ($JSONFiles as $file) {
-            $contents = $file->getContents();
+            $file->getContents();
         }
 
         $valle = array();
@@ -81,7 +79,7 @@ class JSONService
         }
     
         $savedata2 = json_encode($valle); 
-        $savefile2 = $dir_json.'/01_JSON/'.'All.json'; 
+        $savefile2 = $dir_json.'/01_JSON/'.'01_All.json'; 
         
         file_put_contents($savefile2, $savedata2, LOCK_EX);
     }
