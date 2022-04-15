@@ -2,11 +2,12 @@
 
 namespace App\Controller;
 
+use App\Service\Mailer;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+
 
 #[Route('/', name: 'gallery.')]
 
@@ -14,24 +15,33 @@ class GalleryController extends AbstractController
 {
     #[Route('/', name: 'base')]
 
-    public function index(): Response
+    public function index(Mailer $mailer)
+
     {
         // $logger->logData($_SERVER["REMOTE_ADDR"].' - '.$_SERVER["HTTP_USER_AGENT"]);
 
         $imagepath = './images/gallery/';
 
         $LoggerBuilder = new ContainerBuilder();
-
             $LoggerBuilder->register('logger.service', 'LoggerService');
             $LoggerService = $LoggerBuilder->get('logger.service');
-            $LoggerService->logData($_SERVER["REMOTE_ADDR"].' - '.$_SERVER["HTTP_USER_AGENT"]);
+
+/*         $MailBuilder = new ContainerBuilder();
+            $MailBuilder->register('mailer.service', 'Mailer');
+            $Mailer = $MailBuilder->get('mailer.service'); */
+
+        $JSONBuilder = new ContainerBuilder();
+            $JSONBuilder->register('json.service', 'JSONService');
+            $JSONService = $JSONBuilder->get('json.service');
+
+        $LoggerService->logData($_SERVER["REMOTE_ADDR"].' - '.$_SERVER["HTTP_SEC_CH_UA_PLATFORM"].' -> '.$_SERVER["HTTP_USER_AGENT"]);
+
+
+        $mailer->sendMail();
 
         if (!file_exists($imagepath.'01_JSON/'.'01_All.json')) {
         
-            $JSONBuilder = new ContainerBuilder();
-            $JSONBuilder->register('json.service', 'JSONService');
-            $JSONService = $JSONBuilder->get('json.service');
-            $JSONService->dirToArray($imagepath);
+           $JSONService->dirToArray($imagepath);
             $JSONService->MergeJSON($imagepath);
         }
 
