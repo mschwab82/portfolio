@@ -6,23 +6,172 @@
 
 {% block album %}
 
-	<div class="">
+<h1>Bildergallerie</h1>
+
+<div class="container">
+
+	{% for album_1, albums_1 in items %}
+		{% for album_2, albums_2 in albums_1 %}		
+			{% if loop.index == 1 %}
+        		
+				<div class="media">
+          			<div class="layer">
+            			{{ album_1 }}
+			            Bilder = {{loop.length}}
+						<ul>
+
+							{% for album_3, albums_3 in albums_2 %}
+								{% if albums_3 is iterable %}
+									{% for album_4, albums_4 in albums_3 %}
+										<ul>
+											<li>{{ albums_4 }}</li>
+										</ul>
+									{% endfor %}
+								{% else %}
+									<li>{{ album_3 }} = {{ albums_3 }}</li>
+								{% endif %}
+							{% endfor %}
+							
+						</ul>
+					</div>
+					<img src="{{ asset('images/gallery') }}/{{ album_1 }}/{{ album_2 }}" alt="{{ album_1 }}">
+				</div>
+
+			{% endif %}
+		{% endfor %}
+	{% endfor %}
+</div>
+
+{# 	<div class="container mx-autogrid grid-cols-4 gap-4">
 
 		{% for album_1, albums_1 in items %}
 			{% for album_2, albums_2 in albums_1 %}
 				{% if loop.index == 1 %}
-					<div class="card w-96 bg-base-100 shadow-xl">
-						<figure class="px-10 pt-10">
-							<img src="{{ asset('images/gallery') }}/{{ album_1 }}/{{ album_2 }}" alt="{{ album_1 }}" alt="{{ album_1 }}" "height: 200px" class="rounded-2xl" />
+					<div class="card bg-base-100 shadow-xl border-2">
+						<figure class="p-1">
+							<img src="{{ asset('images/gallery') }}/{{ album_1 }}/{{ album_2 }}" alt="{{ album_1 }}" class="rounded-xl shadow-xl object-cover">
 						</figure>
-						<div class="card-body items-center text-center">
-							<a href="{{ path ('gallery.album',{id: album_1}) }}" class="text-2xl text-medium"><h2 class="card-title">{{ album_1 }}</h2></a>
-						</div>
 					</div>
 				{% endif %}
 			{% endfor %}
 		{% endfor %}
 
-	</div>
+    </div> #}
+
+{#     <!--image card layout start-->
+    <div class="container">
+      <!--image row start-->
+      <div class="row">
+        <!--image card start-->
+        <div class="image">
+          <img src="1.jpg" alt="">
+          <div class="details">
+            <h2>Your <span>Title</span></h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <div class="more">
+              <a href="#" class="read-more">Read <span>More</span></a>
+              <div class="icon-links">
+                <a href="#"><i class="fas fa-heart"></i></a>
+                <a href="#"><i class="fas fa-eye"></i></a>
+                <a href="#"><i class="fas fa-paperclip"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--image card end-->
+        <!--image card start-->
+        <div class="image">
+          <img src="2.jpg" alt="">
+          <div class="details">
+            <h2>Your <span>Title</span></h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <div class="more">
+              <a href="#" class="read-more">Read <span>More</span></a>
+              <div class="icon-links">
+                <a href="#"><i class="fas fa-heart"></i></a>
+                <a href="#"><i class="fas fa-eye"></i></a>
+                <a href="#"><i class="fas fa-paperclip"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--image card end-->
+        <!--image card start-->
+        <div class="image">
+          <img src="3.jpg" alt="">
+          <div class="details">
+            <h2>Your <span>Title</span></h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <div class="more">
+              <a href="#" class="read-more">Read <span>More</span></a>
+              <div class="icon-links">
+                <a href="#"><i class="fas fa-heart"></i></a>
+                <a href="#"><i class="fas fa-eye"></i></a>
+                <a href="#"><i class="fas fa-paperclip"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--image card end-->
+      </div>
+      <!--image row end-->
+      <!--image row start-->
+      <div class="row">
+        <!--image card start-->
+        <div class="image">
+          <img src="4.jpg" alt="">
+          <div class="details">
+            <h2>Your <span>Title</span></h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <div class="more">
+              <a href="#" class="read-more">Read <span>More</span></a>
+              <div class="icon-links">
+                <a href="#"><i class="fas fa-heart"></i></a>
+                <a href="#"><i class="fas fa-eye"></i></a>
+                <a href="#"><i class="fas fa-paperclip"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--image card end-->
+        <!--image card start-->
+        <div class="image">
+          <img src="5.jpg" alt="">
+          <div class="details">
+            <h2>Your <span>Title</span></h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <div class="more">
+              <a href="#" class="read-more">Read <span>More</span></a>
+              <div class="icon-links">
+                <a href="#"><i class="fas fa-heart"></i></a>
+                <a href="#"><i class="fas fa-eye"></i></a>
+                <a href="#"><i class="fas fa-paperclip"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--image card end-->
+        <!--image card start-->
+        <div class="image">
+          <img src="6.jpg" alt="">
+          <div class="details">
+            <h2>Your <span>Title</span></h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <div class="more">
+              <a href="#" class="read-more">Read <span>More</span></a>
+              <div class="icon-links">
+                <a href="#"><i class="fas fa-heart"></i></a>
+                <a href="#"><i class="fas fa-eye"></i></a>
+                <a href="#"><i class="fas fa-paperclip"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--image card end-->
+      </div>
+      <!--image row end-->
+    </div>
+    <!--image card layout end--> #}
+
 	
 {% endblock %}
