@@ -34,10 +34,10 @@ class GalleryController extends AbstractController
             $JSONBuilder->register('json.service', 'JSONService');
             $JSONService = $JSONBuilder->get('json.service');
 
-        $LoggerService->logData($_SERVER["REMOTE_ADDR"].' - '.$_SERVER["HTTP_SEC_CH_UA_PLATFORM"].' -> '.$_SERVER["HTTP_USER_AGENT"]);
+        $LoggerService->logData($_SERVER["REMOTE_ADDR"].' - '.$_SERVER["HTTP_USER_AGENT"]);
 
 
-        $mailer->sendMail();
+        // $mailer->sendMail();
 
         if (!file_exists($imagepath.'01_JSON/'.'01_All.json')) {
         
@@ -49,6 +49,10 @@ class GalleryController extends AbstractController
 
         $JSON = file_get_contents($JSON_File); 
         $items = json_decode($JSON, true);
+
+/*         print_r('<pre>');
+        print_r($items);
+        print_r('</pre>'); */
 
         return $this->render('gallery/album.html.twig', [
             'items' => $items,
