@@ -23,10 +23,10 @@ class Mailer
             //->cc('cc@example.com')
             //->bcc('bcc@example.com')
             //->replyTo('fabien@example.com')
-            ->priority(Email::PRIORITY_HIGH)
+            //->priority(Email::PRIORITY_HIGH)
             ->subject('Time for Symfony Mailer!')
             ->text('Sending emails is fun again!')
-            ->html('Test');
+            ->html('Webseite wurde besucht');
 
             $this->mailer->send($email);
     }

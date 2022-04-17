@@ -36,7 +36,6 @@ class GalleryController extends AbstractController
 
         $LoggerService->logData($_SERVER["REMOTE_ADDR"].' - '.$_SERVER["HTTP_USER_AGENT"]);
 
-
         // $mailer->sendMail();
 
         if (!file_exists($imagepath.'01_JSON/'.'01_All.json')) {
