@@ -12,6 +12,7 @@
         "doctrine/doctrine-migrations-bundle": "^3.2",
         "doctrine/orm": "^2.10",
         "pentatrion/vite-bundle": "^1.2",
+        "pug-php/pug-symfony": "*",
         "symfony/apache-pack": "^1.0",
         "symfony/asset": "6.0.*",
         "symfony/console": "6.0.*",
@@ -34,7 +35,9 @@
         "allow-plugins": {
             "composer/package-versions-deprecated": true,
             "symfony/flex": true,
-            "symfony/runtime": true
+            "symfony/runtime": true,
+            "nodejs-php-fallback/nodejs-php-fallback": true,
+            "pug/installer": true
         },
         "optimize-autoloader": true,
         "preferred-install": {
