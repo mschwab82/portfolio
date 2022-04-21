@@ -6,16 +6,23 @@
 
 {% block images %}
 
-  <div class="gallery-container grid 2xl:grid-cols-4 xl:grid-cols-4 lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-x-6 gap-y-12 w-full mt-6" id="gallery-container">
-
+	<div class="container">
+	
 		{% for album_1, albums_1 in items %}
 			{% for album_2, albums_2 in albums_1 %}
 
-					<div class="card w-96 bg-base-100 shadow-xl">
-						<figure class="px-10 pt-10 pb-10">
-							<img src="{{ asset('images/gallery') }}/{{ album_1 }}/{{ album_2 }}" alt="{{ album_1 }}" alt="{{ album_1 }}" "height: 200px" class="rounded-2xl" />
-						</figure>
+				<div class="card">
+					<div class="child" style="--cards:5">
+
+						{# <div id="card-title">{{ album_1 }}</div>
+						<p>{{loop.length}} Bilder</p>  #}
+						
+						{# <a href="{{ path ('gallery.album',{id: album_1}) }}"> #}
+							<img src="{{ asset('images/gallery') }}/{{ album_1 }}/{{ album_2 }}" alt="{{ album_1 }}">
+						{# </a> #}
+
 					</div>
+				</div>
 
 			{% endfor %}
 		{% endfor %}

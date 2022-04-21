@@ -6,54 +6,53 @@
 
 {% block album %}
 
-<h1>Bildergallerie</h1>
+	<div class="container">
 
-<div class="container">
+		{% for album_1, albums_1 in items %}
+			{% for album_2, albums_2 in albums_1 %}		
+				{% if loop.index == 1 %}
 
-	{% for album_1, albums_1 in items %}
-		{% for album_2, albums_2 in albums_1 %}		
-			{% if loop.index == 1 %}
+					<div class="card" style="--cards:5">
 
-				<div class="card" style="--cards:5">
+						<div class="child">
 
-					<div class="child" style="background-image: url({{ asset('images/gallery') }}/{{ album_1 }}/{{ album_2 }}" alt="{{ album_1 }}")">
-						{# <img src="{{ asset('images/gallery') }}/{{ album_1 }}/{{ album_2 }}" alt="{{ album_1 }}"> #}
-						<h2>{{ album_1 }}</h2>
-						<p>{{loop.length}} Bilder</p>
+							{# <div id="card-title">{{ album_1 }}</div>
+							<p>{{loop.length}} Bilder</p>  #}
 
+							<a href="{{ path ('gallery.album',{id: album_1}) }}">
+								<img src="{{ asset('images/gallery') }}/{{ album_1 }}/{{ album_2 }}" alt="{{ album_1 }}">
+							</a>
+
+						</div>
+						<div class="child"></div>
+						<div class="child"></div>
+						<div class="child"></div>
+						<div class="child"></div>
 					</div>
-					<div class="child"></div>
-					<div class="child"></div>
-					<div class="child"></div>
-					<div class="child"></div>
-				</div>
 
-				{# <div class="media">
-					<div class="layer">
+					{# <div class="media">
+						<div class="layer">
+							<ul>
+								{% for album_3, albums_3 in albums_2 %}
+									{% if albums_3 is iterable %}
+										{% for album_4, albums_4 in albums_3 %}
+											<ul>
+												<li>{{ albums_4 }}</li>
+											</ul>
+										{% endfor %}
+									{% else %}
+										<li>{{ album_3 }} = {{ albums_3 }}</li>
+									{% endif %}
+								{% endfor %}
+							</ul>
+						</div>
+						<img src="{{ asset('images/gallery') }}/{{ album_1 }}/{{ album_2 }}" alt="{{ album_1 }}">
+					</div> #}
 
-						<ul>
-
-							{% for album_3, albums_3 in albums_2 %}
-								{% if albums_3 is iterable %}
-									{% for album_4, albums_4 in albums_3 %}
-										<ul>
-											<li>{{ albums_4 }}</li>
-										</ul>
-									{% endfor %}
-								{% else %}
-									<li>{{ album_3 }} = {{ albums_3 }}</li>
-								{% endif %}
-							{% endfor %}
-							
-						</ul>
-					</div>
-				<img src="{{ asset('images/gallery') }}/{{ album_1 }}/{{ album_2 }}" alt="{{ album_1 }}">
-				</div>
- #}
-			{% endif %}
+				{% endif %}
+			{% endfor %}
 		{% endfor %}
-	{% endfor %}
-</div>
+	</div>
 
 {# 	<div class="container mx-autogrid grid-cols-4 gap-4">
 
@@ -187,4 +186,5 @@
 		<!--image card layout end--> #}
 
 	
+
 {% endblock %}
