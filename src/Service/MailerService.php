@@ -1,35 +1,21 @@
 <?php
 
-
-
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Email;
 
 class MailerService
 {
-    private $mailer;
-
-    public function __construct(MailerInterface $mailer)
+    public function sendMail(MailerInterface $mailer)
     {
-        $this->mailer = $mailer;
-    }
 
-    public function sendMail($ip, $browser)
-    {
-        $email = (new Email())
+        $email = new Email();
+
+        $email
             ->from('michael.schwab@outlook.com')
             ->to('michael.schwab@gmx.ch')
-            //->cc('cc@example.com')
-            //->bcc('bcc@example.com')
-            //->replyTo('fabien@example.com')
-            //->priority(Email::PRIORITY_HIGH)
-            ->subject('Webseite wurde besucht')
-            ->html(
-                'IP = '.$ip.'<br>'.
-                // 'Plattform = '.$plattform.'<br>'.
-                'Browser = '.$browser
-            );
+            ->subject('Site update just happened!')
+            ->text('Someone just updated the site. We told them:');
 
-        $this->mailer->send($email);
+        $mailer->send($email);
     }
 }

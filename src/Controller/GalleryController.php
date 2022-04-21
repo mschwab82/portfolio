@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use App\Service\Mailer;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpFoundation\Request;
@@ -15,8 +14,7 @@ class GalleryController extends AbstractController
 {
     #[Route('/', name: 'base')]
 
-    public function index(Mailer $mailer)
-
+    public function index()
     {
         // $logger->logData($_SERVER["REMOTE_ADDR"].' - '.$_SERVER["HTTP_USER_AGENT"]);
 
@@ -26,21 +24,16 @@ class GalleryController extends AbstractController
             $LoggerBuilder->register('logger.service', 'LoggerService');
             $LoggerService = $LoggerBuilder->get('logger.service');
 
-/*         $MailBuilder = new ContainerBuilder();
-            $MailBuilder->register('mailer.service', 'Mailer');
-            $Mailer = $MailBuilder->get('mailer.service'); */
-
         $JSONBuilder = new ContainerBuilder();
             $JSONBuilder->register('json.service', 'JSONService');
             $JSONService = $JSONBuilder->get('json.service');
 
         $LoggerService->logData($_SERVER["REMOTE_ADDR"].' - '.$_SERVER["HTTP_USER_AGENT"]);
 
-        // $mailer->sendMail();
+        // $MailerService->sendMail();
 
         if (!file_exists($imagepath.'01_JSON/'.'01_All.json')) {
-        
-           $JSONService->dirToArray($imagepath);
+            $JSONService->dirToArray($imagepath);
             $JSONService->MergeJSON($imagepath);
         }
 
@@ -49,7 +42,7 @@ class GalleryController extends AbstractController
         $JSON = file_get_contents($JSON_File); 
         $items = json_decode($JSON, true);
 
-/*         print_r('<pre>');
+        /* print_r('<pre>');
         print_r($items);
         print_r('</pre>'); */
 
