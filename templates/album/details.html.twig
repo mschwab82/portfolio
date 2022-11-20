@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Home -
+	{{ album }}
+	-
+	{{ image }}
+{% endblock %}
+
+{% block details %}
+
+	<div class="card bg-base-50 shadow-xl">
+		<figure class="px-2 pt-2">
+			<img class="rounded-xl" src="{{ asset('images/gallery') }}/{{ album }}/{{ image }}"/>
+		</figure>
+
+		<div class="card-body items-left text-left">
+			<p>
+				<div class="stats shadow">
+					<div class="stat">
+						<div class="stat-title">Blende</div>
+						<div class="stat-value text-lg">{{ items.ApertureFNumber }}</div>
+					</div>
+					<div class="stat">
+						<div class="stat-title">Brennweite</div>
+						<div class="stat-value text-lg">{{ items.FocalLength }}
+							mm</div>
+					</div>
+					<div class="stat">
+						<div class="stat-title">Verschlusszeit</div>
+						<div class="stat-value text-lg">{{ items.ExposureTime }}
+							sek.</div>
+					</div>
+					<div class="stat">
+						<div class="stat-title">ISO Wert</div>
+						<div class="stat-value text-lg">{{ items.ISOSpeedRatings }}</div>
+					</div>
+				</div>
+				<div class="stats shadow">
+					<div class="stat">
+						<div class="stat-title">Objektiv</div>
+						<div class="stat-value text-lg">{{ items.Lens }}</div>
+					</div>
+					<div class="stat">
+						<div class="stat-title">Aufnahmedatum</div>
+						<div class="stat-value text-lg">{{ items.DateTimeOriginal }}</div>
+					</div>
+				</div>
+				<div class="stats shadow">
+					<div class="stat">
+						<div class="stat-title">Tags</div>
+						<div class="stat-value text-lg">
+							{% if items.Tags is not null %}
+								{% for tag_1, tags_1 in tags %}
+									#{{ tags_1 }}
+								{% endfor %}
+							{% endif %}
+						</div>
+					</div>
+				</div>
+			</p>
+		</div>
+	</div>
+{% endblock %}

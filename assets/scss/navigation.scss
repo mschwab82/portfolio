@@ -1,0 +1,12 @@
+.my_navigation {
+  padding-top: 3rem;
+  padding-bottom: 1rem;
+
+  margin: 0 auto;
+  max-width: 1200px;
+
+  .my_border {
+    box-shadow: $BorderShadow;
+    border-radius: $BDRadius;
+  }
+}

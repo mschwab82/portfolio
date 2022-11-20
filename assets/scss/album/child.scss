@@ -1,0 +1,20 @@
+$ImageWidth: 260px;
+$ImageHeight: 180px;
+
+$BDRadius: 15px;
+
+
+
+.my_album_child {
+
+
+  img {
+    display: block;
+    border-radius: $BDRadius;
+    width: $ImageWidth;
+    height: $ImageHeight;
+    object-fit: cover;
+    box-shadow: $BorderShadow;
+  }
+
+}

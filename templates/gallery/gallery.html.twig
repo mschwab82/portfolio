@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gallerien
+{% endblock %}
+
+{% block gallery %}
+
+	<div class="my_gallery">
+		{% for album_1, albums_1 in items %}
+			{% for album_2, albums_2 in albums_1 %}
+				{% if loop.index == 1 %}
+
+					<a href="{{ path ('album.index',{album_id: album_1}) }}/?page=1">
+						<div class="my_card card" style="--cards:5">
+							<div class="my_gallery_child rounded-xl">
+								<div class="my_gallery_child-title">
+									<button class="btn btn-warning">{{ album_1 }}</button>
+								</div>
+							</div>
+							<div class="my_gallery_child rounded-xl">
+								<img src="{{ asset('images/gallery') }}/{{ album_1 }}/{{ album_2 }}" alt="{{ album_1 }}" class="object-cover">
+							</div>
+							<div class="my_gallery_child"></div>
+							<div class="my_gallery_child"></div>
+							<div class="my_gallery_child"></div>
+							<div class="my_gallery_child"></div>
+						</div>
+					</a>
+
+				{% endif %}
+			{% endfor %}
+		{% endfor %}
+	</div>
+
+{% endblock %}

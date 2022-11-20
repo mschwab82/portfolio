@@ -1,0 +1,8 @@
+@import "./details.scss";
+@import "./child.scss";
+
+.my_album {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-gap: 50px;
+}

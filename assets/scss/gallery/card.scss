@@ -1,0 +1,21 @@
+@import "./child.scss";
+@import "./simple-lightbox.scss";
+
+.my_card {
+  cursor: pointer;
+  position: relative;
+  height: 0;
+  padding-bottom: 200px;
+  --offset-multiplier: 4px;
+  transition: transform 0.6s ease;
+  --translate: 0;
+  transform: translate(var(--translate), var(--translate));
+  filter: brightness(70%);
+}
+
+.my_card:hover {
+  --offset-multiplier: 6px;
+  --translate: calc(-1px * (var(--cards) - 1));
+  transition: transform 0.3s ease;
+  filter: none;
+}

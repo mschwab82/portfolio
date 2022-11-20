@@ -1,0 +1,20 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+$BDRadius: 15px;
+$BorderShadow: 0px 4px 8px rgba(0, 0, 0, 0.1),
+  0px -4px 8px rgba(255, 255, 255, 0.8);
+
+@import "./navigation.scss";
+@import "./breadcrumbs.scss";
+@import "./container.scss";
+@import "gallery/basic.scss";
+@import "album/basic.scss";
+@import "./pagination.scss";
+
+body {
+  margin-right: 40px;
+  margin-left: 40px;
+  align-items: center;
+}

@@ -1,0 +1,10 @@
+@import "./gallery/basic.scss";
+@import "./album/basic.scss";
+
+.my_container {
+  padding-top: 2rem;
+  padding-bottom: 3rem;
+
+  margin: 0 auto;
+  max-width: 1200px;
+}

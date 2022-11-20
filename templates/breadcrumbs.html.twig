@@ -1,0 +1,24 @@
+{% block breadcrumbs %}
+	<div class="text-xl breadcrumbs">
+
+		<ul>
+			<li>
+				<a href="{{ path ('gallery.base') }}">Home</a>
+			</li>
+
+			{% if album is defined %}
+				<li>
+					<a href="{{ path ('album.index',{album_id: album}) }}">{{ album }}</a>
+				</li>
+			{% endif %}
+
+			{% if image is defined %}
+				<li>
+					{{ image }}
+				</li>
+			{% endif %}
+
+		</ul>
+
+	</div>
+{% endblock %}

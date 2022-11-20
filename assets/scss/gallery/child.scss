@@ -1,0 +1,71 @@
+$ImageWidth: 260px;
+$ImageHeight: 180px;
+
+$BDRadius: 15px;
+$BorderShadow: 0px 4px 8px rgba(0, 0, 0, 0.1),
+  0px -4px 8px rgba(255, 255, 255, 0.8);
+
+.my_gallery_child {
+  position: absolute;
+  width: $ImageWidth;
+  height: $ImageHeight;
+  color: white;
+  box-sizing: border-box;
+  background-size: cover;
+  border-radius: $BDRadius;
+  transition: inherit;
+  --translate: calc(var(--offset) * var(--offset-multiplier));
+  transform: translate(var(--translate), var(--translate));
+
+  .child-title {
+    text-decoration: none;
+    filter: none;
+  }
+
+  img {
+    display: block;
+    border-radius: $BDRadius;
+    width: $ImageWidth;
+    height: $ImageHeight;
+    object-fit: cover;
+    box-shadow: $BorderShadow;
+  }
+}
+
+.my_gallery_child:nth-child(1) {
+  display: flex;
+  padding-top: 0.5rem;
+  justify-items: left;
+  font-size: 30px;
+
+  div:hover {
+    filter: none;
+  }
+
+  --offset: 0;
+  z-index: 4;
+}
+.my_gallery_child:nth-child(2) {
+  box-shadow: $BorderShadow;
+
+  --offset: 1;
+  z-index: 3;
+}
+.my_gallery_child:nth-child(3) {
+  box-shadow: $BorderShadow;
+
+  --offset: 2;
+  z-index: 2;
+}
+.my_gallery_child:nth-child(4) {
+  box-shadow: $BorderShadow;
+
+  --offset: 3;
+  z-index: 1;
+}
+.my_gallery_child:nth-child(5) {
+  box-shadow: $BorderShadow;
+
+  --offset: 4;
+  z-index: 0;
+}
