@@ -13,67 +13,65 @@ use Symfony\Component\Routing\Annotation\Route;
 class AlbumController extends AbstractController
 {
 
-    #[Route('/{album_id}', name: 'index')]
-    public function album(Request $child)
-    {
+  #[Route('/{album_id}', name: 'index')]
+  public function album(Request $child)
+  {
 
-/*         $LoggerBuilder = new ContainerBuilder();
-        $LoggerBuilder->register('logger.service', 'LoggerService');
-        $LoggerService = $LoggerBuilder->get('logger.service'); */
+    $LoggerBuilder = new ContainerBuilder();
+    $LoggerBuilder->register('logger.service', 'LoggerService');
+    $LoggerService = $LoggerBuilder->get('logger.service');
 
-        $album_id = $child->attributes->get('album_id');
+    $album_id = $child->attributes->get('album_id');
 
-        $imagepath = $_SERVER['DOCUMENT_ROOT'] . '/images/gallery/';
+    $imagepath = $_SERVER['DOCUMENT_ROOT'] . '/images/gallery/';
 
-        $JSON = file_get_contents($imagepath . '01_JSON' . '/' . $album_id . '.json');
+    $JSON = file_get_contents($imagepath . '01_JSON' . '/' . $album_id . '.json');
 
-        $items = json_decode($JSON, true);
+    $items = json_decode($JSON, true);
 
-        $img_count = count($items[$album_id]);
-        $per_page = 10;
-        $max_pages = ceil($img_count / $per_page);
+    $img_count = count($items[$album_id]);
+    $per_page = 10;
+    $max_pages = ceil($img_count / $per_page);
 
-        // $LoggerService->logData($_SERVER["REMOTE_ADDR"] . ' - ' . 'Album ' . $album_id . ' wurde aufgerufen');
+    $LoggerService->logData($_SERVER["REMOTE_ADDR"] . ' - ' . 'Album ' . $album_id . ' wurde aufgerufen');
 
+    return $this->render('album/album.html.twig', [
+      'album' => $album_id,
+      'items' => $items,
+      'img_count' => $img_count,
+      'per_page' => $per_page,
+      'max_pages' => $max_pages
+    ]);
+  }
 
+  #[Route('/{album_id}/{image_id}', name: 'details')]
+  public function details(Request $child)
+  {
 
-        return $this->render('album/album.html.twig', [
-            'album' => $album_id,
-            'items' => $items,
-            'img_count' => $img_count,
-            'per_page' => $per_page,
-            'max_pages' => $max_pages
-        ]);
-    }
+    $LoggerBuilder = new ContainerBuilder();
+    $LoggerBuilder->register('logger.service', 'LoggerService');
+    $LoggerService = $LoggerBuilder->get('logger.service');
 
-    #[Route('/{album_id}/{image_id}', name: 'details')]
-    public function details(Request $child)
-    {
+    $album_id = $child->attributes->get('album_id');
+    $image_id = $child->attributes->get('image_id');
 
-/*         $LoggerBuilder = new ContainerBuilder();
-        $LoggerBuilder->register('logger.service', 'LoggerService');
-        $LoggerService = $LoggerBuilder->get('logger.service'); */
+    $imagepath = $_SERVER['DOCUMENT_ROOT'] . '/images/gallery/';
 
-        $album_id = $child->attributes->get('album_id');
-        $image_id = $child->attributes->get('image_id');
+    $JSON = file_get_contents($imagepath . '01_JSON' . '/' . $album_id . '.json');
 
-        $imagepath = $_SERVER['DOCUMENT_ROOT'] . '/images/gallery/';
+    $items = json_decode($JSON, true);
 
-        $JSON = file_get_contents($imagepath . '01_JSON' . '/' . $album_id . '.json');
+    $details_items = $items[$album_id][$image_id];
+    // $details_tags = $items[$album_id][$image_id]['Tags'];
 
-        $items = json_decode($JSON, true);
+    $LoggerService->logData($_SERVER["REMOTE_ADDR"] . ' - ' . 'Bild ' . $image_id . ' aus Album ' . $album_id . ' wurde aufgerufen');
 
-        $details_items = $items[$album_id][$image_id];
-        $details_tags = $items[$album_id][$image_id]['Tags'];
+    return $this->render('album/details.html.twig', [
 
-        // $LoggerService->logData($_SERVER["REMOTE_ADDR"] . ' - ' . 'Bild ' . $image_id . ' aus Album ' . $album_id . ' wurde aufgerufen');
-
-        return $this->render('album/details.html.twig', [
-
-            'album' => $album_id,
-            'image' => $image_id,
-            'items' => $details_items,
-            'tags' => $details_tags
-        ]);
-    }
+      'album' => $album_id,
+      'image' => $image_id,
+      'items' => $details_items,
+      // 'tags' => $details_tags
+    ]);
+  }
 }

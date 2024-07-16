@@ -7,40 +7,46 @@
 		<title>
 			{% block title %}{% endblock %}
 		</title>
-{{ vite_entry_link_tags('app') }}
+		
+		{{ vite_entry_link_tags('app') }}
 
 	</head>
 
-
 	<!-- ANCHOR Body  -->
 	<body>
+
 		{% block body %}
 
-		{# 			{% block navigation %}
-				<div class="my_navigation">{% include 'navigation.html.twig' %}</div>
-			{% endblock %} #}
-
+{# 			{% block navigation %}
+					<div class="my_navigation">{% include 'navigation.html.twig' %}</div>
+			{% endblock %}
+ #}
 			{% block breadcrumbs %}
 				<div class="my_breadcrumbs">{% include 'breadcrumbs.html.twig' %}</div>
 			{% endblock %}
 
 			<div class="my_container">
+
 				{% block gallery %}{% endblock %}
 				{% block album %}{% endblock %}
 				{% block details %}{% endblock %}
+				{% block error %}{% endblock %}
 			</div>
+
+{# 		{% block footer %}
+				<div class="my_footer">{% include 'footer.html.twig' %}</div>
+		{% endblock %} #}
+
+		{# {% block pagination %}
+					<div class="my_pagination">{% include 'pagination.html.twig' %}</div>
+		{% endblock %} #}
+
+		<!-- ANCHOR JS  -->
+			<script src="https://kit.fontawesome.com/ea07098c7f.js" crossorigin="anonymous"></script>
 
 		{% endblock %}
 
-		{# 		{% block pagination %}
-					<div class="my_pagination">{% include 'pagination.html.twig' %}</div>
-				{% endblock %} #}
-
-		<!-- ANCHOR JS  -->
-		<script src="https://kit.fontawesome.com/ea07098c7f.js" crossorigin="anonymous"></script>
-
-
-{{ vite_entry_script_tags('app') }}
+		{{ vite_entry_script_tags('app') }}
 
 	</body>
 </html>
